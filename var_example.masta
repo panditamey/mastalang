@@ -1,0 +1,31 @@
+Ignore Maar Assign values
+He Bagh a mhanje 10
+He Bagh b mhanje 5
+
+Ignore Maar Arithmetic operations
+He Bagh c mhanje a guna b 
+
+Bol "Value of c is"
+Bol c
+
+Line Maar
+
+He Bagh c mhanje a guna b 
+
+Bol "Value of c is"
+Bol c
+
+Ignore Maar Print a line of dashes
+Line Maar
+
+He Bagh d mhanje a bhag b
+
+Bol "Value of d is"
+Bol d
+
+Ignore Maar Print another line of dashes
+Line Maar
+
+Parat 0
+
+

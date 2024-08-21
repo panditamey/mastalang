@@ -1,0 +1,23 @@
+Ignore Maar Initialize the sum variable
+He Bagh sum mhanje 0
+
+Line Maar
+Line Maar
+
+Ignore Maar Loop from 1 to 5
+He Bagh i mhanje 1
+Chal i 1 Te 5
+    He Bagh sum mhanje sum adhik i
+    Bol "Value i chi ahe :"
+    Bol i
+    He Bagh i mhanje i adhik 1
+Sod
+
+Ignore Maar Print the final result
+Bol "Final Sum ahe :"
+Bol sum
+Line Maar
+Line Maar
+
+Ignore Maar End of program
+Parat 0

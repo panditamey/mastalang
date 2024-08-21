@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masta Lang Playground</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        font-family: "Consolas", "monospace";
+      }
+      textarea {
+        resize: vertical;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+      }
+    </style>
+  </head>
+  <body class="bg-gray-800 flex flex-col items-center p-8">
+    <h1 class="text-3xl font-bold mb-6 text-white align-left">
+      Masta Lang Playground
+    </h1>
+    <div class="max-w-2xl mb-8 w-full">
+      <h2 class="bg-white p-4 text-lg font-semibold text-gray-800 rounded-md">
+        📁 main.masta
+      </h2>
+    </div>
+    <form
+      action="/run"
+      method="POST"
+      class="w-full max-w-2xl bg-white p-6 rounded-lg shadow-lg"
+      onsubmit="preserveHeight()"
+    >
+      <textarea
+        id="code"
+        name="code"
+        placeholder="Enter your Marathi script here..."
+        class="w-full p-4 border border-gray-300 rounded-md text-sm mb-4"
+        oninput="autoResize(this)"
+      >
+{{ code }}</textarea
+      >
+      <button
+        type="submit"
+        class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+      >
+        Run
+      </button>
+    </form>
+    {% if output %}
+    <div class="w-full max-w-2xl mt-8 bg-white p-6 rounded-lg shadow-lg">
+      <h2 class="text-2xl font-semibold mb-4">Output:</h2>
+      <pre class="bg-gray-900 text-white p-4 rounded-md">
+{{ "\n".join(output) }}</pre
+      >
+    </div>
+    {% endif %}
+    <script>
+      function autoResize(textarea) {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+      }
+
+      function preserveHeight() {
+        const textarea = document.getElementById("code");
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const textarea = document.getElementById("code");
+        autoResize(textarea);
+      });
+    </script>
+  </body>
+</html>
