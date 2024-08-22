@@ -1,0 +1,31 @@
+body {
+  font-family: "Consolas", "monospace";
+}
+textarea {
+  resize: vertical;
+  box-sizing: border-box;
+}
+pre {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  position: relative;
+}
+code {
+  font-family: "Consolas", "monospace";
+  font-size: 0.875rem; /* 14px */
+}
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #4f46e5;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  z-index: 10;
+}

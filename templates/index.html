@@ -4,33 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Masta Lang Playground</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='assets/favicon.svg') }}"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-      body {
-        font-family: "Consolas", "monospace";
-      }
-      textarea {
-        resize: vertical;
-        box-sizing: border-box; /* Include padding and border in the element's total width and height */
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
   </head>
   <body class="bg-gray-800 flex flex-col items-center p-8">
-    <h1 class="text-3xl font-bold mb-6 text-white align-left">
-      Masta Lang Playground
-    </h1>
-    <div class="max-w-2xl mb-8 w-full">
-      <h2 class="bg-white p-4 text-lg font-semibold text-gray-800 rounded-md">
-        📁 main.masta
-      </h2>
+    <div class="flex flex-col items-center mb-5">
+      <img
+        src="{{ url_for('static', filename='assets/MastLang.svg') }}"
+        alt=""
+        class="md:w-1/2"
+      />
+      <p class="text-white text-center my-4 font-semibold max-w-xl">
+        Marath-Moli, Easy Pseudo Language that interprets
+        <br />Marathi-English Code with ease made in Python.
+      </p>
+      <button class="bg-blue-500 text-white px-6 py-2 rounded-md">
+        Github
+      </button>
     </div>
     <form
       action="/run"
       method="POST"
-      class="w-full max-w-2xl bg-white p-6 rounded-lg shadow-lg"
+      class="w-full max-w-2xl bg-white px-6 pb-6 rounded-lg shadow-lg"
       onsubmit="preserveHeight()"
     >
+      <div class="max-w-2xl w-full">
+        <h2 class="bg-white p-4 text-lg font-semibold text-gray-800 rounded-md">
+          📁 main.masta
+        </h2>
+      </div>
       <textarea
         id="code"
         name="code"
@@ -47,6 +57,7 @@
         Run
       </button>
     </form>
+
     {% if output %}
     <div class="w-full max-w-2xl mt-8 bg-white p-6 rounded-lg shadow-lg">
       <h2 class="text-2xl font-semibold mb-4">Output:</h2>
@@ -55,22 +66,196 @@
       >
     </div>
     {% endif %}
-    <script>
-      function autoResize(textarea) {
-        textarea.style.height = "auto";
-        textarea.style.height = textarea.scrollHeight + "px";
-      }
+    <div class="documentation mt-4 sm:max-w-2xl w-[90%]">
+      <h2 class="text-2xl font-bold mb-4 font-sans text-white">
+        Documentation
+      </h2>
+      <h6 class="description text-white md:max-w-2xl">
+        MastaLang is a fun project of Marath-Moli, Easy Pseudo Language that
+        interprets Marathi-English Code with ease. Source code of interpreter is
+        written in Python.
+      </h6>
+      <div class="w-full md:max-w-2xl">
+        <!-- Code Snippets Section -->
+        <div class="w-full max-w-2xl mt-8 bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-white mb-4 font-sans">Comments</h2>
+          <h6 class="description text-white text-sm font-sans mb-4">
+            Comments can be written in the form of <b>Ignore Maar</b>.
+          </h6>
+          <div class="relative">
+            <button class="copy-btn" onclick="copyAndInjectCode(this)">
+              Copy Code
+            </button>
+            <pre><code id="code-snippet">
+Comments can be written in the form of Ignore Maar 
 
-      function preserveHeight() {
-        const textarea = document.getElementById("code");
-        textarea.style.height = "auto";
-        textarea.style.height = textarea.scrollHeight + "px";
-      }
+Ignore Maar Initialize the sum variable
+He Bagh sum mhanje 0
+        </code></pre>
+          </div>
+        </div>
 
-      document.addEventListener("DOMContentLoaded", () => {
-        const textarea = document.getElementById("code");
-        autoResize(textarea);
-      });
-    </script>
+        <div class="w-full max-w-2xl mt-8 bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-white mb-4 font-sans">
+            Print Statement
+          </h2>
+          <h6 class="description text-white text-sm font-sans mb-4">
+            Print Statement can be written in the form of <b>Bol</b>.
+          </h6>
+          <div class="relative">
+            <button class="copy-btn" onclick="copyAndInjectCode(this)">
+              Copy Code
+            </button>
+            <pre><code id="code-snippet">
+Bol "Namaskar Mandali"
+        </code></pre>
+          </div>
+        </div>
+
+        <div class="w-full max-w-2xl mt-8 bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-white mb-4 font-sans">
+            Horizontal Line
+          </h2>
+          <h6 class="description text-white text-sm font-sans mb-4">
+            Horizontal Line can be written in the form of <b>Line Maar</b>.
+          </h6>
+          <div class="relative">
+            <button class="copy-btn" onclick="copyAndInjectCode(this)">
+              Copy Code
+            </button>
+            <pre><code id="code-snippet">
+Line Maar
+        </code></pre>
+          </div>
+        </div>
+
+        <div class="w-full max-w-2xl mt-8 bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-white mb-4 font-sans">
+            Variable Initialization
+          </h2>
+          <h6 class="description text-white text-sm font-sans mb-4">
+            Variable Initialization can be written in the form of <br />
+            He Bagh <b>name</b> mhanje <b>value</b>.
+          </h6>
+          <div class="relative">
+            <button class="copy-btn" onclick="copyAndInjectCode(this)">
+              Copy Code
+            </button>
+            <pre><code id="code-snippet">
+Ignore Maar Initialize the sum variable
+He Bagh sum mhanje 10
+        </code></pre>
+          </div>
+        </div>
+
+        <div class="w-full max-w-2xl mt-8 bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-white mb-4 font-sans">
+            Arithmetic operations
+          </h2>
+          <h6 class="description text-white text-sm font-sans mb-4">
+            Arithmetic operations can be written in the form of <br />
+            sum + is <b>adhik</b> <br />
+            sum - is <b>vaja</b> <br />
+            sum * is <b>guna</b> <br />
+            sum / is <b>bhag</b>.
+          </h6>
+          <div class="relative">
+            <button class="copy-btn" onclick="copyAndInjectCode(this)">
+              Copy Code
+            </button>
+            <pre><code id="code-snippet">
+Ignore Maar Arithmetic operations
+
+He Bagh a mhanje 20 adhik 10
+Bol a
+
+He Bagh b mhanje 20 vaja 10
+Bol b
+
+He Bagh c mhanje 20 guna 10
+Bol c
+
+He Bagh d mhanje 20 bhag 10
+Bol d
+        </code></pre>
+          </div>
+        </div>
+
+        <div class="w-full max-w-2xl mt-8 bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-white mb-4 font-sans">
+            Conditional statements
+          </h2>
+          <h6 class="description text-white text-sm font-sans mb-4">
+            Conditional statements can be written in the form of <br />
+            if as <b>Jar</b> <br />
+            else as <b>Nahi Tar</b> <br />
+            end if as <b>Sod</b>.
+          </h6>
+          <div class="relative">
+            <button class="copy-btn" onclick="copyAndInjectCode(this)">
+              Copy Code
+            </button>
+            <pre><code id="code-snippet">
+Ignore Maar Conditional Example
+
+He Bagh x mhanje 7
+
+Jar x > 5
+    Bol "x motha ahe"
+Nahi Tar
+    Bol "x chota ahe"
+Sod
+
+Ignore Maar Parat 0 Ends Code Here
+Parat 0  
+        </code></pre>
+          </div>
+        </div>
+
+        <div class="w-full max-w-2xl mt-8 bg-gray-700 p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-white mb-4 font-sans">
+            Loop statements
+          </h2>
+          <h6 class="description text-white text-sm font-sans mb-4">
+            Loop statements can be written in the form of
+            <b>Chal</b> and <b>Te</b> if we want to loop from <b>1</b> to
+            <b>5</b> then we can write <b>Chal i 1 Te 5</b> and to end write
+            <b>Sod</b>.
+          </h6>
+          <div class="relative">
+            <button class="copy-btn" onclick="copyAndInjectCode(this)">
+              Copy Code
+            </button>
+            <pre><code id="code-snippet">
+Ignore Maar Initialize the sum variable
+He Bagh sum mhanje 0
+
+Line Maar
+Line Maar
+
+Ignore Maar Loop from 1 to 5
+He Bagh i mhanje 1
+Chal i 1 Te 5
+    He Bagh sum mhanje sum adhik i
+    Bol "Value i chi ahe :"
+    Bol i
+    He Bagh i mhanje i adhik 1
+Sod
+
+Ignore Maar Print the final result
+Bol "Final Sum ahe :"
+Bol sum
+Line Maar
+Line Maar
+
+Ignore Maar End of program
+Parat 0               
+        </code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
 </html>
